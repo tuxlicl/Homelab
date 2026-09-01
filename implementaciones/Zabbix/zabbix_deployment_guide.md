@@ -29,8 +29,8 @@ Para mantener la base de datos segura y no exponer contraseñas en texto plano d
 Este archivo contenía las variables de la base de datos MariaDB:
 
 ```env
-MYSQL_PASSWORD=ZabbixSecureDbPass!2026
-MYSQL_ROOT_PASSWORD=RootSecurePassZabbix2026!
+MYSQL_PASSWORD=<TU_MYSQL_PASSWORD_AQUI>
+MYSQL_ROOT_PASSWORD=<TU_MYSQL_ROOT_PASSWORD_AQUI>
 ```
 
 ---

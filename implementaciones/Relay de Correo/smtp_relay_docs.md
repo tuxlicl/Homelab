@@ -9,7 +9,7 @@ El objetivo de este relay es centralizar el envío de correos de tu red local (Z
 
 Para que el relay pueda enviar correos a través de Gmail, necesitas una **Contraseña de Aplicación** (App Password), ya que Google no permite usar la contraseña normal de tu cuenta por seguridad.
 
-1. Ingresa a tu cuenta de Google (`noreplylabhome@gmail.com`).
+1. Ingresa a tu cuenta de Google (`<TU_CORREO_AQUI>`).
 2. Ve a **Gestionar tu cuenta de Google** > **Seguridad**.
 3. Asegúrate de tener activada la **Verificación en dos pasos (2FA)**.
 4. Busca la sección **Contraseñas de aplicaciones** (App Passwords).
@@ -36,7 +36,7 @@ services:
     environment:
       - SMTP_SERVER=smtp.gmail.com
       - SMTP_PORT=587
-      - SMTP_USERNAME=noreplylabhome@gmail.com
+      - SMTP_USERNAME=<TU_CORREO_AQUI>
       - SMTP_PASSWORD=  # Tu App Password de 16 caracteres
       - SERVER_HOSTNAME=
 ```
@@ -69,7 +69,7 @@ Cualquier aplicación dentro de tu red local que necesite enviar correos, ahora 
 * **Puerto SMTP:** `2525`
 * **Seguridad / Cifrado:** `Ninguno` (El contenedor se encarga de cifrar hacia Gmail)
 * **Autenticación:** `Ninguno` (El contenedor ya tiene las credenciales)
-* **Correo de origen (From):** `noreplylabhome@gmail.com` *(Debe coincidir con la cuenta de Gmail, de lo contrario Gmail podría rechazarlo)*
+* **Correo de origen (From):** `<TU_CORREO_AQUI>` *(Debe coincidir con la cuenta de Gmail, de lo contrario Gmail podría rechazarlo)*
 
 > [!IMPORTANT]
 > Dado que este contenedor no pide autenticación para recibir correos internamente, asegúrate de **nunca exponer el puerto 2525 a Internet** a través de tu router o proxy reverso. Solo debe ser accesible desde tu red local (LAN).

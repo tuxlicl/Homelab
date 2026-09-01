@@ -57,10 +57,10 @@ Para habilitar y proteger la ruta `/admin`, se generó un hash seguro con **Argo
 
 2. **Formateo para Docker Compose:**
    Si la cadena generada es:
-   `$argon2id$v=19$m=65540,t=3,p=4$cO8K...$q/Y8...`
+   `$argon2id$v=19$m=65540,t=3,p=4$<TU_HASH_ARGON2_AQUI>`
    
    En el archivo `docker-compose.yml` se debe guardar reemplazando los `$` por `$$`:
-   `$$argon2id$$v=19$$m=65540,t=3,p=4$$cO8K...$$q/Y8...`
+   `$$argon2id$$v=19$$m=65540,t=3,p=4$$<TU_HASH_ARGON2_AQUI>`
 
 3. **Iniciación / Reinicio del Contenedor:**
    ```bash
