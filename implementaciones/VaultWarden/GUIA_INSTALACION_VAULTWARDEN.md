@@ -6,11 +6,11 @@ Esta guía documenta el procedimiento paso a paso para desplegar, asegurar e int
 
 ## 📌 1. Ficha Técnica del Servicio
 
-* **Servidor Host:** `SAGR` (`10.55.40.7`)
+* **Servidor Host:** `SAGR` (`<IP_SAGR>`)
 * **Ruta de Despliegue:** `/DOCKER-DATA/vaultwarden/`
 * **Puerto Interno (Host):** `8445` (Mapeado al puerto `80` del contenedor)
 * **Dominio Público (HTTPS):** `https://vault.labhome.cl` (vía Cloudflare Tunnel)
-* **Relay de Correo (SMTP):** `10.55.40.10:2525`
+* **Relay de Correo (SMTP):** `<IP_RASP_NODE1>:2525`
 * **Panel de Administración:** `https://vault.labhome.cl/admin`
 
 ---
@@ -79,7 +79,7 @@ Para cumplir con el requisito de contexto seguro (`Web Crypto API`) que exige Bi
    * **Subdomain:** `vault`
    * **Domain:** `labhome.cl`
    * **Service Type:** `HTTP`
-   * **URL:** `localhost:8445` (o `10.55.40.7:8445`)
+   * **URL:** `localhost:8445` (o `<IP_SAGR>:8445`)
 4. Guardar cambios. Cloudflare provee el certificado SSL/TLS (HTTPS) de forma automática.
 
 ---
@@ -100,7 +100,7 @@ En el panel `/admin`, navegar a la sección **SMTP Settings**:
 
 * **Enabled:** `Checked` (Activado)
 * **Use Sendmail:** `Unchecked`
-* **Host:** `10.55.40.10`
+* **Host:** `<IP_RASP_NODE1>`
 * **Secure SMTP:** `none`
 * **Port:** `2525`
 * **From Address:** `noreply@labhome.cl`

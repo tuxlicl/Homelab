@@ -23,7 +23,7 @@ Al evaluar las opciones de despliegue en un HomeLab existen dos alternativas pri
 
 ## 🛠️ 2. Ficha Técnica del Servidor y VM
 
-* **Servidor Hypervisor:** Proxmox VE (`proxtux` - `10.55.40.5`)
+* **Servidor Hypervisor:** Proxmox VE (`proxtux` - `<IP_PROXMOX1>`)
 * **ID de la VM:** `104`
 * **Nombre de la VM:** `HomeAssistant`
 * **Arquitectura de VM:** Q35 + BIOS UEFI (OVMF) (SecureBoot desactivado: `pre-enrolled-keys=0`)
@@ -43,7 +43,7 @@ Al evaluar las opciones de despliegue en un HomeLab existen dos alternativas pri
 
 Conectarse como `root` al clúster de Proxmox:
 ```bash
-ssh root@10.55.40.5
+ssh root@<IP_PROXMOX1>
 ```
 
 ### Paso 2: Descarga e Importación de la Imagen Oficial HAOS OVA
@@ -115,7 +115,7 @@ Para controlar tu hogar de forma remota y recibir alertas móviles con HTTPS de 
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 10.55.40.0/24  # Rango de IPs locales del HomeLab
+    - 10.X.X.0/24  # Rango de IPs locales del HomeLab
 ```
 
 5. Accede de forma ultra segura a través de: `https://ha.labhome.cl`

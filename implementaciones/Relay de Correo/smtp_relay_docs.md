@@ -65,7 +65,7 @@ docker logs -f smtp-relay
 
 Cualquier aplicación dentro de tu red local que necesite enviar correos, ahora debe configurarse de la siguiente manera, apuntando a tu Raspberry Pi (o donde hayas desplegado el contenedor):
 
-* **Servidor SMTP:** `10.55.40.10` *(IP de la Raspberry)*
+* **Servidor SMTP:** `<IP_RASP_NODE1>` *(IP de la Raspberry)*
 * **Puerto SMTP:** `2525`
 * **Seguridad / Cifrado:** `Ninguno` (El contenedor se encarga de cifrar hacia Gmail)
 * **Autenticación:** `Ninguno` (El contenedor ya tiene las credenciales)
