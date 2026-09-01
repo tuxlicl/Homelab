@@ -1,0 +1,14 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      - SIGNUPS_ALLOWED=false
+      - TZ=America/Santiago
+      # NOTA IMPORTANTE: En docker-compose.yml, cada signo '$' del hash Argon2 debe duplicarse como '$$'
+      - ADMIN_TOKEN=$$argon2id$$v=19$$m=65540,t=3,p=4$$cO8K11ct7Y85/MRl6M6BJ67EHCXwisF2DdIMMtsTWtY$$q/Y8r/NUYB5CQBB/A6oT+dJut+GR1p/tuu3CkFga2Bc
+    volumes:
+      - ./data:/data
+    ports:
+      - 8445:80

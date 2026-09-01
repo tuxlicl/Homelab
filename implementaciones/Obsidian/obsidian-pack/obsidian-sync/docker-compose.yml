@@ -1,0 +1,22 @@
+services:
+  obsidian-sync:
+    image: couchdb:3
+    container_name: obsidian-sync
+    restart: unless-stopped
+    environment:
+      COUCHDB_USER: ${COUCHDB_USER:-obsidian}
+      COUCHDB_PASSWORD: ${COUCHDB_PASSWORD:?Setea COUCHDB_PASSWORD en .env}
+    volumes:
+      - couchdb_data:/opt/couchdb/data
+      - couchdb_config:/opt/couchdb/etc/local.d
+    ports:
+      - "5984:5984"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5984/_up"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  couchdb_data:
+  couchdb_config:
