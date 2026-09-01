@@ -1,6 +1,6 @@
-# 🏠 HomeLab Infrastructure & Documentation
+# 🏠 LabHome 3D - Infrastructure & Documentation
 
-Repositorio privado con las configuraciones, despliegues en Docker, Proxmox VE y documentación técnica del HomeLab (**labhome.cl**).
+Repositorio privado de **LabHome 3D** con las configuraciones, despliegues en Docker, Proxmox VE y documentación técnica del proyecto (**labhome.cl**).
 
 ---
 
