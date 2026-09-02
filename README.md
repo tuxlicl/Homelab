@@ -1,6 +1,6 @@
 # 🏠 LabHome 3D - Infrastructure & Documentation
 
-Repositorio oficial del proyecto **LabHome 3D** (**labhome.cl**). Contiene todas las implementaciones, arquitecturas, archivos Docker Compose y guías técnicas del HomeLab.
+Repositorio oficial del proyecto **LabHome 3D** (**mi-homelab.cl**). Contiene todas las implementaciones, arquitecturas, archivos Docker Compose y guías técnicas del HomeLab.
 
 ---
 
@@ -14,7 +14,7 @@ homelab/
 │   ├── Integracion RSS Ghost - Make - X/  # Automatización de contenidos (Ghost -> Social)
 │   ├── Obsidian/                          # Obsidian Sync y servidor CouchDB propio
 │   ├── Relay de Correo/                   # Configuración del Relay SMTP local (<IP_RASP_NODE1>:2525)
-│   ├── Tunnel Cloudflared Raspberry/      # Túneles de Cloudflare Zero Trust (labhome.cl)
+│   ├── Tunnel Cloudflared Raspberry/      # Túneles de Cloudflare Zero Trust (mi-homelab.cl)
 │   ├── VaultWarden/                       # Gestor de contraseñas Vaultwarden en SAGR
 │   └── Zabbix/                            # Servidor y plantillas de monitoreo Zabbix
 ├── docker/                                # Definiciones de Docker Compose organizadas
@@ -28,18 +28,18 @@ homelab/
 
 ### 🔐 1. [Vaultwarden (Gestor de Contraseñas)](implementaciones/VaultWarden/GUIA_DESPLIEGUE_VAULTWARDEN.md)
 * **Servidor:** `SAGR` (`<IP_SAGR>:8445`)
-* **Acceso Público:** `https://vault.labhome.cl`
+* **Acceso Público:** `https://vault.mi-homelab.cl`
 * Configuración con hash Argon2, integración con SMTP Relay local y exposición con Cloudflare Tunnel.
 
 ### 🏠 2. [Home Assistant OS en Proxmox VE](implementaciones/HomeAssistant/GUIA_DESPLIEGUE_HOME_ASSISTANT_PROXMOX.md)
 * **Hypervisor:** Proxmox VE (`proxtux` / `proxtux2`)
-* **Acceso Público:** `https://ha.labhome.cl`
+* **Acceso Público:** `https://ha.mi-homelab.cl`
 * Instalación mediante VM UEFI (q35) en disco `DATASERVER`, supervisor completo y tienda de add-ons.
 
 ### 📊 3. [Homepage Dashboard](implementaciones/Homepage/homepage_setup_guide.md)
 * **Servidor:** `Rasp_Node_1` (`<IP_RASP_NODE1>:4000`)
-* **Acceso Público:** `https://homepage.labhome.cl`
-* Dashboard interactivo con widgets de Zabbix, Grafana, OpenMediaVault, Proxmox y tema oscuro Geinet.cl.
+* **Acceso Público:** `https://homepage.mi-homelab.cl`
+* Dashboard interactivo con widgets de Zabbix, Grafana, OpenMediaVault, Proxmox y tema oscuro Dark Cyber.
 
 ### 📈 4. [Zabbix Monitoring Server](implementaciones/Zabbix/zabbix_deployment_guide.md)
 * **Servidor:** `SAGR` (`<IP_SAGR>:8088`)
@@ -47,7 +47,7 @@ homelab/
 
 ### 🌐 5. [Cloudflare Tunnel Zero Trust](implementaciones/Tunnel%20Cloudflared%20Raspberry/cloudflare_tunnel_guide.md)
 * **Servidor:** `Rasp_Node_1` / `SAGR`
-* Exposición segura HTTPS sin apertura de puertos en el router para todos los servicios de `labhome.cl`.
+* Exposición segura HTTPS sin apertura de puertos en el router para todos los servicios de `mi-homelab.cl`.
 
 ### ✉️ 6. [Relay de Correo SMTP Local](implementaciones/Relay%20de%20Correo/smtp_relay_docs.md)
 * **Servidor:** `Rasp_Node_1` (`<IP_RASP_NODE1>:2525`)

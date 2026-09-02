@@ -24,7 +24,7 @@ curl -s -X PUT "${HOST}/_node/_local/_config/chttpd/max_http_request_size" -d '"
 echo "[OK] Limite configurado (4GB)."
 
 echo "[*] Creando bases de datos..."
-DATABASES=("vault-homelab" "vault-chilquinta" "vault-sagr" "vault-personal")
+DATABASES=("vault-homelab" "vault-trabajo" "vault-sagr" "vault-personal")
 
 for DB in "${DATABASES[@]}"; do
     RESULT=$(curl -s -o /dev/null -w "%{http_code}" -X PUT "${HOST}/${DB}")
@@ -43,7 +43,7 @@ echo "  Listo!"
 echo ""
 echo "  Bases de datos creadas:"
 echo "    - vault-homelab      -> Homelab / infra personal"
-echo "    - vault-chilquinta   -> Trabajo / Chilquinta"
+echo "    - vault-trabajo   -> Trabajo / Trabajo"
 echo "    - vault-sagr         -> SAGR / drones / startup"
 echo "    - vault-personal     -> Finanzas / familia / Instagram"
 echo ""

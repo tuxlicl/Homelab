@@ -1,4 +1,4 @@
-# Estrategia de contenido — @aliste.claudio
+# Estrategia de contenido — @mi_usuario
 ## Estructura de charla (5 partes)
 1. Hook disruptivo
 2. Contexto breve

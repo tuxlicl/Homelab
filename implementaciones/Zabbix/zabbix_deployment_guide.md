@@ -3,7 +3,7 @@
 Este documento detalla el procedimiento paso a paso que se llevó a cabo para la instalación y configuración del entorno de monitoreo Zabbix (versión 7.4) utilizando contenedores Docker sobre un servidor con Rocky Linux.
 
 > [!NOTE]
-> **Servidor Destino:** `sagr.geinet.cl`
+> **Servidor Destino:** `sagr.mi-infraestructura.cl`
 > **Directorio Base:** `/DOCKER-DATA/zabbix`
 > **Puerto Web Asignado:** `8088` (Debido a que el puerto 80 ya se encontraba en uso)
 
@@ -13,11 +13,11 @@ Este documento detalla el procedimiento paso a paso que se llevó a cabo para la
 
 Lo primero fue conectarse al servidor remoto vía SSH para crear la estructura de directorios necesaria donde Zabbix almacenará su configuración, scripts y bases de datos persistentes.
 
-Se ejecutaron los siguientes comandos para crear la carpeta principal y asignar la propiedad correcta al usuario administrador (`tuxli`):
+Se ejecutaron los siguientes comandos para crear la carpeta principal y asignar la propiedad correcta al usuario administrador (`usuario_ssh`):
 
 ```bash
 sudo mkdir -p /DOCKER-DATA/zabbix
-sudo chown -R tuxli:tuxli /DOCKER-DATA/zabbix
+sudo chown -R usuario_ssh:usuario_ssh /DOCKER-DATA/zabbix
 ```
 
 ---
@@ -120,6 +120,6 @@ Este comando se encargó de descargar (`pull`) las imágenes oficiales desde Doc
 > [!IMPORTANT]
 > Una vez levantados los contenedores, el panel de administración queda expuesto y listo para el ingreso:
 
-- **URL de Acceso:** `http://sagr.geinet.cl:8088`
+- **URL de Acceso:** `http://sagr.mi-infraestructura.cl:8088`
 - **Usuario:** `Admin` *(La "A" debe ser mayúscula)*
 - **Contraseña:** `zabbix`

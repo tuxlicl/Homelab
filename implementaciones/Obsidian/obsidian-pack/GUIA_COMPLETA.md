@@ -7,12 +7,12 @@ Mac (Obsidian)  <---sync--->  Homelab Rocky Linux (CouchDB en Docker)
                                     |
 Celular (Obsidian) <---sync--------+
                                     |
-                          Cloudflare Tunnel (obsidian.labhome.cl)
+                          Cloudflare Tunnel (obsidian.mi-homelab.cl)
 ```
 
 Un solo container Docker con 4 bases de datos separadas:
 1. vault-homelab - tu infra personal
-2. vault-chilquinta - trabajo
+2. vault-trabajo - trabajo
 3. vault-sagr - drones, DGAC, startup
 4. vault-personal - finanzas, familia, Instagram
 
@@ -23,7 +23,7 @@ Un solo container Docker con 4 bases de datos separadas:
 ### Paso 1: Copiar archivos al servidor
 
 ```bash
-ssh tuxli@<ip-homelab>
+ssh usuario_ssh@<ip-homelab>
 mkdir -p ~/docker/obsidian-sync
 cd ~/docker/obsidian-sync
 # Copia la carpeta obsidian-sync/ del zip aqui
@@ -59,7 +59,7 @@ En tu config de cloudflared:
 ```yaml
 ingress:
   # ... tus rutas existentes ...
-  - hostname: obsidian.labhome.cl
+  - hostname: obsidian.mi-homelab.cl
     service: http://localhost:5984
   - service: http_status:404
 ```
@@ -73,7 +73,7 @@ sudo systemctl restart cloudflared
 
 Desde tu Mac, en el navegador:
 ```
-https://obsidian.labhome.cl
+https://obsidian.mi-homelab.cl
 ```
 Deberia responder con `{"couchdb":"Welcome"...}`
 
@@ -90,7 +90,7 @@ Descarga desde https://obsidian.md — instala normal.
 Al abrir Obsidian:
 1. "Create new vault"
 2. Nombre: `Homelab`, ubicacion: `~/Obsidian/Homelab`
-3. Repetir para `Chilquinta`, `SAGR`, `Personal`
+3. Repetir para `Trabajo`, `SAGR`, `Personal`
 
 Para cambiar entre vaults: icono de boveda (abajo izquierda) > "Open another vault"
 
@@ -98,7 +98,7 @@ Para cambiar entre vaults: icono de boveda (abajo izquierda) > "Open another vau
 
 ```bash
 cp -r vaults/vault-homelab/*    ~/Obsidian/Homelab/
-cp -r vaults/vault-chilquinta/* ~/Obsidian/Chilquinta/
+cp -r vaults/vault-trabajo/* ~/Obsidian/Trabajo/
 cp -r vaults/vault-sagr/*       ~/Obsidian/SAGR/
 cp -r vaults/vault-personal/*   ~/Obsidian/Personal/
 ```
@@ -115,7 +115,7 @@ Los plugins se instalan POR VAULT. Hacer esto 4 veces:
 
 | Campo | Valor |
 |---|---|
-| Server URI | `https://obsidian.labhome.cl` |
+| Server URI | `https://obsidian.mi-homelab.cl` |
 | Username | `obsidian` |
 | Password | tu password del .env |
 | Database name | ver tabla abajo |
@@ -129,7 +129,7 @@ Los plugins se instalan POR VAULT. Hacer esto 4 veces:
 | Vault | Database name |
 |---|---|
 | Homelab | `vault-homelab` |
-| Chilquinta | `vault-chilquinta` |
+| Trabajo | `vault-trabajo` |
 | SAGR | `vault-sagr` |
 | Personal | `vault-personal` |
 

@@ -8,4 +8,4 @@
 - [ ] Validacion Legal DPA
 - [ ] Gobernanza de costos por area
 - [ ] Activar ZDR modo none + SCP
-#chilquinta #claude #bedrock #proyecto-activo
+#trabajo #claude #bedrock #proyecto-activo

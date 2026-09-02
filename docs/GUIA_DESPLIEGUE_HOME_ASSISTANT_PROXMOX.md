@@ -1,6 +1,6 @@
 # 🏠 Guía Completa: Despliegue de Home Assistant OS (HAOS) en Proxmox VE para HomeLab
 
-Esta guía documenta la instalación, configuración e integración completa de **Home Assistant OS (HAOS)** sobre la infraestructura de virtualización de **Proxmox VE**, lista para su publicación en **LabHome.cl**.
+Esta guía documenta la instalación, configuración e integración completa de **Home Assistant OS (HAOS)** sobre la infraestructura de virtualización de **Proxmox VE**, lista para su publicación en **mi-homelab.cl**.
 
 ---
 
@@ -33,7 +33,7 @@ Al evaluar las opciones de despliegue en un HomeLab existen dos alternativas pri
   * **Almacenamiento:** 32 GB LVM en Almacenamiento NAS (`LUN-OMV-2TB`)
   * **Red:** Bridge `vmbr0` (VirtIO)
 * **Puerto Web Inicial:** `8123` (`http://<IP_HOMEASSISTANT>:8123`)
-* **Dominio Público (HTTPS):** `https://ha.labhome.cl` (vía Cloudflare Tunnel)
+* **Dominio Público (HTTPS):** `https://ha.mi-homelab.cl` (vía Cloudflare Tunnel)
 
 ---
 
@@ -103,10 +103,10 @@ rm -f /tmp/haos_ova.qcow2
 Para controlar tu hogar de forma remota y recibir alertas móviles con HTTPS de grado bancario sin abrir puertos en el router:
 
 1. Ingresa a **Cloudflare Zero Trust** (`dash.cloudflare.com`).
-2. Ve a **Networks** -> **Tunnels** y edita el túnel activo de `labhome.cl`.
+2. Ve a **Networks** -> **Tunnels** y edita el túnel activo de `mi-homelab.cl`.
 3. Agrega un nuevo **Public Hostname**:
    * **Subdomain:** `ha`
-   * **Domain:** `labhome.cl`
+   * **Domain:** `mi-homelab.cl`
    * **Service Type:** `HTTP`
    * **URL:** `10.55.40.X:8123` (IP asignada a la VM de Home Assistant)
 4. En Home Assistant, edita el archivo `configuration.yaml` (vía la extensión File Editor de la tienda de Add-ons) para permitir el proxy inverso de Cloudflare:
@@ -118,7 +118,7 @@ http:
     - 10.X.X.0/24  # Rango de IPs locales del HomeLab
 ```
 
-5. Accede de forma ultra segura a través de: `https://ha.labhome.cl`
+5. Accede de forma ultra segura a través de: `https://ha.mi-homelab.cl`
 
 ---
 
@@ -132,7 +132,7 @@ Agrega lo siguiente en tu `/DOCKER-DATA/homepage/config/services.yaml`:
 - Domótica y Smart Home:
     - Home Assistant:
         icon: home-assistant.png
-        href: https://ha.labhome.cl
+        href: https://ha.mi-homelab.cl
         description: Panel Domótico Central
         widget:
           type: homeassistant

@@ -1,14 +1,14 @@
 # Automatización de publicación en RRSS: Ghost → Make → Instagram/X
 
-**Blog:** labhome.cl
+**Blog:** mi-homelab.cl
 **Última actualización:** 3 de julio de 2026
-**Autor:** Claudio Aliste
+**Autor:** Usuario Homelab
 
 ---
 
 ## 1. ¿Qué hace esta automatización?
 
-Cuando publicas o actualizas un artículo en Ghost (labhome.cl), un webhook dispara un escenario en Make.com que:
+Cuando publicas o actualizas un artículo en Ghost (mi-homelab.cl), un webhook dispara un escenario en Make.com que:
 
 1. Publica automáticamente en **X/Twitter** (vía el módulo nativo de Buffer).
 2. Publica automáticamente en **Instagram** (vía una llamada HTTP directa a la API GraphQL nueva de Buffer).
@@ -52,7 +52,7 @@ El escenario debe estar en modo **"Immediately as data arrives"** (activado, íc
 
 Este módulo sigue funcionando con el conector nativo de Buffer en Make. Configuración de referencia (no requiere cambios):
 
-- **Profiles:** `6a24aea9c687a22dd46b760b` (canal X — tuxli)
+- **Profiles:** `<TU_PROFILE_ID_AQUI>` (canal X — usuario_ssh)
 - **Text:** texto del post, arma automáticamente el mensaje con el título y link del artículo
 - **Publication:** Post immediately
 - **Attach media to the update:** `No` (false) — X no necesita imagen adjunta, genera su propia preview del link
@@ -98,8 +98,8 @@ curl -s -X POST 'https://api.buffer.com' \
 
 | Canal | Nombre | channelId |
 |---|---|---|
-| Instagram | aliste.claudio | `6a24c5abc687a22dd46bc30c` |
-| X/Twitter | tuxli | `6a24aea9c687a22dd46b760b` |
+| Instagram | @mi_usuario | `<TU_PROFILE_ID_AQUI>` |
+| X/Twitter | usuario_ssh | `<TU_PROFILE_ID_AQUI>` |
 
 ### 5.3 Configuración del módulo HTTP en Make
 
@@ -122,7 +122,7 @@ Pegar tal cual en el campo **Body content**, y luego reemplazar las variables re
 
 ```json
 {
-  "query": "mutation { createPost(input: { text: \"🚨 ¡Nuevo artículo en el blog!\\n{{1.post.current.title}}\\nLink: {{1.post.current.url}}\\n\\n#homelab #fyp #engineering #technology #cloud\", channelId: \"6a24c5abc687a22dd46bc30c\", schedulingType: automatic, mode: customScheduled, dueAt: \"{{formatDate(addMinutes(now; 2); \"YYYY-MM-DDTHH:mm:ss.000\"; \"UTC\")}}Z\", assets: [{ image: { url: \"{{1.post.current.feature_image}}\" } }], metadata: { instagram: { type: post, shouldShareToFeed: true } } }) { ... on PostActionSuccess { post { id dueAt } } ... on MutationError { message } } }"
+  "query": "mutation { createPost(input: { text: \"🚨 ¡Nuevo artículo en el blog!\\n{{1.post.current.title}}\\nLink: {{1.post.current.url}}\\n\\n#homelab #fyp #engineering #technology #cloud\", channelId: \"<TU_PROFILE_ID_AQUI>\", schedulingType: automatic, mode: customScheduled, dueAt: \"{{formatDate(addMinutes(now; 2); \"YYYY-MM-DDTHH:mm:ss.000\"; \"UTC\")}}Z\", assets: [{ image: { url: \"{{1.post.current.feature_image}}\" } }], metadata: { instagram: { type: post, shouldShareToFeed: true } } }) { ... on PostActionSuccess { post { id dueAt } } ... on MutationError { message } } }"
 }
 ```
 
@@ -131,7 +131,7 @@ Pegar tal cual en el campo **Body content**, y luego reemplazar las variables re
 | Parte | Qué hace |
 |---|---|
 | `text: "🚨 ¡Nuevo artículo...\\n{{1.post.current.title}}\\nLink: {{1.post.current.url}}..."` | Arma el texto del post: emoji, título real del artículo (tomado del webhook), link real, y hashtags fijos. Los `\\n` son saltos de línea (doble backslash porque el JSON está anidado dentro de otro JSON). |
-| `channelId: "6a24c5abc687a22dd46bc30c"` | Fijo — apunta siempre al canal de Instagram. No usar variable aquí. |
+| `channelId: "<TU_PROFILE_ID_AQUI>"` | Fijo — apunta siempre al canal de Instagram. No usar variable aquí. |
 | `schedulingType: automatic` | Requerido por Buffer, valor fijo. |
 | `mode: customScheduled` | Le dice a Buffer que publique en una hora programada por nosotros (no en la cola normal). Es lo que permite "publicar ya" en vez de esperar el horario configurado en Buffer. |
 | `dueAt: "{{formatDate(addMinutes(now; 2); ...; \"UTC\")}}Z"` | Calcula "ahora + 2 minutos" **en UTC real** (el tercer parámetro `"UTC"` es obligatorio, si se omite Make usa la hora de Chile y Buffer la rechaza por estar "en el pasado"). El margen de 2 minutos evita que la hora ya haya pasado al momento en que Buffer procesa la solicitud. |
@@ -185,7 +185,7 @@ export BUFFER_KEY="tu_api_key_aqui"
 curl -s -X POST 'https://api.buffer.com' \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer $BUFFER_KEY" \
-  -d '{"query": "mutation { createPost(input: { text: \"Prueba\", channelId: \"6a24c5abc687a22dd46bc30c\", schedulingType: automatic, mode: addToQueue, saveToDraft: true, assets: [{ image: { url: \"https://placehold.co/1080x1080.jpg\" } }], metadata: { instagram: { type: post, shouldShareToFeed: true } } }) { ... on PostActionSuccess { post { id } } ... on MutationError { message } } }"}' | jq
+  -d '{"query": "mutation { createPost(input: { text: \"Prueba\", channelId: \"<TU_PROFILE_ID_AQUI>\", schedulingType: automatic, mode: addToQueue, saveToDraft: true, assets: [{ image: { url: \"https://placehold.co/1080x1080.jpg\" } }], metadata: { instagram: { type: post, shouldShareToFeed: true } } }) { ... on PostActionSuccess { post { id } } ... on MutationError { message } } }"}' | jq
 ```
 
 `saveToDraft: true` deja el post como borrador en Buffer — no se publica de verdad, ideal para probar cambios de sintaxis sin ensuciar el feed de Instagram.

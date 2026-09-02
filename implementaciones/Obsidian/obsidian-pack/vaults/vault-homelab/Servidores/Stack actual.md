@@ -2,12 +2,12 @@
 ## Rocky Linux 9
 | Servicio | Puerto | Estado |
 |---|---|---|
-| Ghost CMS (labhome.cl) | 2368 | Activo |
+| Ghost CMS (mi-homelab.cl) | 2368 | Activo |
 | Grafana | 3000 | Activo |
 | Zabbix | 8080 | Activo |
 | CouchDB (Obsidian Sync) | 5984 | Nuevo |
 ## Cloudflare Tunnel
-- labhome.cl - Ghost
-- grafana.labhome.cl - Grafana
-- obsidian.labhome.cl - CouchDB
+- mi-homelab.cl - Ghost
+- grafana.mi-homelab.cl - Grafana
+- obsidian.mi-homelab.cl - CouchDB
 #homelab #rocky-linux #docker

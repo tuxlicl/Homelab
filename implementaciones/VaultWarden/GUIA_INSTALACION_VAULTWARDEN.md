@@ -9,9 +9,9 @@ Esta guía documenta el procedimiento paso a paso para desplegar, asegurar e int
 * **Servidor Host:** `SAGR` (`<IP_SAGR>`)
 * **Ruta de Despliegue:** `/DOCKER-DATA/vaultwarden/`
 * **Puerto Interno (Host):** `8445` (Mapeado al puerto `80` del contenedor)
-* **Dominio Público (HTTPS):** `https://vault.labhome.cl` (vía Cloudflare Tunnel)
+* **Dominio Público (HTTPS):** `https://vault.mi-homelab.cl` (vía Cloudflare Tunnel)
 * **Relay de Correo (SMTP):** `<IP_RASP_NODE1>:2525`
-* **Panel de Administración:** `https://vault.labhome.cl/admin`
+* **Panel de Administración:** `https://vault.mi-homelab.cl/admin`
 
 ---
 
@@ -74,10 +74,10 @@ Para habilitar y proteger la ruta `/admin`, se generó un hash seguro con **Argo
 Para cumplir con el requisito de contexto seguro (`Web Crypto API`) que exige Bitwarden/Vaultwarden para guardar contraseñas y funcionar en dispositivos móviles:
 
 1. Ingresar al panel de **Cloudflare Zero Trust** -> **Networks** -> **Tunnels**.
-2. Editar el túnel activo de `labhome.cl`.
+2. Editar el túnel activo de `mi-homelab.cl`.
 3. Agregar un nuevo **Public Hostname**:
    * **Subdomain:** `vault`
-   * **Domain:** `labhome.cl`
+   * **Domain:** `mi-homelab.cl`
    * **Service Type:** `HTTP`
    * **URL:** `localhost:8445` (o `<IP_SAGR>:8445`)
 4. Guardar cambios. Cloudflare provee el certificado SSL/TLS (HTTPS) de forma automática.
@@ -86,10 +86,10 @@ Para cumplir con el requisito de contexto seguro (`Web Crypto API`) que exige Bi
 
 ## ⚙️ 5. Configuración General y Endurecimiento (Admin Panel)
 
-Ingresar a `https://vault.labhome.cl/admin` utilizando la contraseña en texto plano configurada en el paso 3.
+Ingresar a `https://vault.mi-homelab.cl/admin` utilizando la contraseña en texto plano configurada en el paso 3.
 
 ### A. General Settings:
-* **Domain URL:** `https://vault.labhome.cl` *(Crucial para generar enlaces internos y validar sesiones)*.
+* **Domain URL:** `https://vault.mi-homelab.cl` *(Crucial para generar enlaces internos y validar sesiones)*.
 * **Allow new signups:** `Unchecked` (Desactivado / `false`). Evita que cualquier usuario no autorizado registre una cuenta en tu servidor.
 
 ---
@@ -103,7 +103,7 @@ En el panel `/admin`, navegar a la sección **SMTP Settings**:
 * **Host:** `<IP_RASP_NODE1>`
 * **Secure SMTP:** `none`
 * **Port:** `2525`
-* **From Address:** `noreply@labhome.cl`
+* **From Address:** `noreply@mi-homelab.cl`
 * **From Name:** `Vault Labhome`
 * **Username / Password:** (En blanco, al usar relay sin autenticación directa).
 
@@ -118,7 +118,7 @@ Para conectar la extensión de navegador o la aplicación móvil oficial de **Bi
 1. Descargar la aplicación oficial de **Bitwarden** en el dispositivo.
 2. En la pantalla inicial de Login/Registro, presionar el ícono de **Configuración (⚙️)** en la esquina superior.
 3. En el campo **Server URL / URL del servidor**, ingresar:
-   `https://vault.labhome.cl`
+   `https://vault.mi-homelab.cl`
 4. Guardar y proceder a iniciar sesión con la cuenta creada.
 
 ---
