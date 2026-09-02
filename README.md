@@ -1,4 +1,4 @@
-# 🏠 LabHome 3D - Infrastructure & Documentation
+# 🏠 LabHome 3D - Infrastructura & Documentacion del proyecto
 
 Repositorio oficial del proyecto **LabHome 3D** (**mi-homelab.cl**). Contiene todas las implementaciones, arquitecturas, archivos Docker Compose y guías técnicas del HomeLab.
 
@@ -63,4 +63,4 @@ homelab/
 
 ## 🔒 Seguridad y Privacidad
 
-Este repositorio es **PRIVADO** y no incluye claves privadas, tokens activos ni contraseñas en texto plano. Todos los valores sensibles están parametrizados mediante variables de entorno `.env`.
+Este repositorio es **Publico** y no incluye claves privadas, tokens activos ni contraseñas en texto plano. Todos los valores sensibles están parametrizados mediante variables de entorno `.env`. y esta bajo Licencia MITT Open source
